@@ -2,7 +2,7 @@
 
 module Fcmpush
   class Message
-    class Name < Value
+    class Condition < Value
     end
   end
 end
