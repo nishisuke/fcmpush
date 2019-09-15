@@ -1,8 +1,6 @@
-require "fcmpush/version"
+require 'fcmpush/version'
+require 'fcmpush/error'
 
 module Fcmpush
-  class Error < StandardError; end
-  # Your code goes here...
-
   autoload :Message, 'fcmpush/message'
 end

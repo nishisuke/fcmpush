@@ -12,6 +12,7 @@ require_relative 'message/android'
 require_relative 'message/webpush'
 require_relative 'message/fcm_options'
 
+# https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages
 module Fcmpush
   class Message
     METHOD_NAME_TO_CLASS_NAME = constants(false)
