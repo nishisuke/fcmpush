@@ -22,7 +22,8 @@ module Fcmpush
         val = instance_variable_get(name)
         hash[key] = val unless val.nil?
       end
-      hash.to_json
+      
+      ::Fcmpush::Client.new(authorization:).send(message: { message: hash })
     end
 
     def set_token(token)
