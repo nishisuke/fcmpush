@@ -16,7 +16,7 @@ module Fcmpush
       @fcm_options = nil
     end
 
-    def send(validate_only: false)
+    def send(authorization:, validate_only: false, client_class: ::Fcmpush::Client)
       message = instance_variables.each.with_object({}) do |name, hash|
         val = instance_variable_get(name)
         unless val.nil?
@@ -24,8 +24,9 @@ module Fcmpush
           hash[key] = val 
         end
       end
-      
-      ::Fcmpush::Client.new(authorization:).send({ message: message, validate_only: validate_only })
+      body = { message: message, validate_only: validate_only }
+      client = client_class.new(authorization: authorization)
+      client.send(body)
     end
 
     def set_token(token)
