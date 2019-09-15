@@ -10,7 +10,7 @@ module Fcmpush
       @authorization = authorization
     end
 
-    def send(message: message)
+    def send(message)
       http_driver.post(URL, message.to_json, headers)
     end
 

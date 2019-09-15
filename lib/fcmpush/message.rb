@@ -17,13 +17,15 @@ module Fcmpush
     end
 
     def send()
-      hash = instance_variables.each.with_object({}) do |name, hash|
-        key = name.to_s.delete_prefix('@').to_sym
+      message = instance_variables.each.with_object({}) do |name, hash|
         val = instance_variable_get(name)
-        hash[key] = val unless val.nil?
+        unless val.nil?
+          key = name.to_s.delete_prefix('@').to_sym
+          hash[key] = val 
+        end
       end
       
-      ::Fcmpush::Client.new(authorization:).send(message: { message: hash })
+      ::Fcmpush::Client.new(authorization:).send({ message: message })
     end
 
     def set_token(token)
