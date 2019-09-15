@@ -1,17 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'message/value' # Must be first
-
-require_relative 'message/token'
-require_relative 'message/topic'
-require_relative 'message/condition'
-require_relative 'message/notification'
-require_relative 'message/data'
-require_relative 'message/apns'
-require_relative 'message/android'
-require_relative 'message/webpush'
-require_relative 'message/fcm_options'
-
 # https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages
 
 module Fcmpush
@@ -29,6 +17,11 @@ module Fcmpush
     end
 
     def send()
+      hash = instance_variables.each.with_object({}) do |name, hash|
+        key = name.to_s.delete_prefix('@').to_sym
+        hash[key] = instance_variable_get(name)
+      end
+      p hash
     end
 
     def set_token(token)
