@@ -13,17 +13,9 @@ require_relative 'message/webpush'
 require_relative 'message/fcm_options'
 
 # https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages
+
 module Fcmpush
   class Message
-    METHOD_NAME_TO_CLASS_NAME = constants(false)
-      .reject { |n| n == :Value }
-      .each
-      .with_object({}) do |class_name, hash|
-
-      key = "set_#{class_name.downcase}".to_sym
-      hash[key] = class_name
-    end
-
     def initialize
       @token = nil
       @topic = nil
@@ -34,6 +26,79 @@ module Fcmpush
       @webpush = nil
       @apns = nil
       @fcm_options = nil
+    end
+
+    def send()
+    end
+
+    def set_token(token)
+      @token = token
+    end
+
+    def set_topic(topic)
+      @topic = topic
+    end
+
+    def set_condition(condition)
+      @condition = condition
+    end
+
+    def set_data(data)
+      @data = data
+    end
+
+    def set_notification(title:, body:, image:)
+      @notification = {
+        title: title,
+        body: body,
+        image: image,
+      }
+    end
+
+    def set_apns(headers:, payload:, fcm_options:)
+      @apns = {
+        headers: headers,
+        payload: payload,
+        fcm_options: fcm_options,
+      }
+    end
+
+    def set_fcm_options(analytics_label:)
+      @fcm_options = {
+        analytics_label: analytics_label,
+      }
+    end
+
+    # def set_android(android)
+    # end
+
+    # def set_webpush(webpush)
+    # end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    METHOD_NAME_TO_CLASS_NAME = constants(false)
+      .reject { |n| n == :Value }
+      .each
+      .with_object({}) do |class_name, hash|
+
+      key = "set_#{class_name.downcase}".to_sym
+      hash[key] = class_name
     end
 
     private
