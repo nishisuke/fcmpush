@@ -19,9 +19,10 @@ module Fcmpush
     def send()
       hash = instance_variables.each.with_object({}) do |name, hash|
         key = name.to_s.delete_prefix('@').to_sym
-        hash[key] = instance_variable_get(name)
+        val = instance_variable_get(name)
+        hash[key] = val unless val.nil?
       end
-      p hash
+      hash.to_json
     end
 
     def set_token(token)
