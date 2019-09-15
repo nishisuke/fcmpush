@@ -10,9 +10,9 @@ module Fcmpush
 
     def valid?
       [
-        title.nil? || title.instance_of?(String)
-        body.nil? || body.instance_of?(String)
-        image.nil? || image.instance_of?(String) && image.match?(URI.regexp)
+        title.nil? || title.instance_of?(String),
+        body.nil? || body.instance_of?(String),
+        image.nil? || image.instance_of?(String) && image.match?(URI.regexp),
       ].all?
     end
 
