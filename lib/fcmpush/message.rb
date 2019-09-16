@@ -35,6 +35,10 @@ module Fcmpush
     end
 
     def as_valid_json!
+      unless @token || @topic || @condition
+        raise ::Fcmpush::ValidationError, "#{self.class.name} must have token or topic or condition."
+      end
+
       instance_variables.each.with_object({}) do |key, hash|
         val = instance_variable_get(key)
 
