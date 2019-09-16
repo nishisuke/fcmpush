@@ -47,25 +47,29 @@ module Fcmpush
           klass = self.class.const_get(name.pascalize)
           klass.new(val).validate!
 
-          hash[name] = val
+          hash[name.to_sym] = val
         end
       end
     end
 
     def set_token(token)
       @token = token
+      self
     end
 
     def set_topic(topic)
       @topic = topic
+      self
     end
 
     def set_condition(condition)
       @condition = condition
+      self
     end
 
     def set_data(data)
       @data = data
+      self
     end
 
     def set_notification(title:, body:, image:)
@@ -74,6 +78,7 @@ module Fcmpush
         body: body,
         image: image,
       }
+      self
     end
 
     def set_apns(headers:, payload:, fcm_options:)
@@ -82,12 +87,14 @@ module Fcmpush
         payload: payload,
         fcm_options: fcm_options,
       }
+      self
     end
 
     def set_fcm_options(analytics_label:)
       @fcm_options = {
         analytics_label: analytics_label,
       }
+      self
     end
 
     # def set_android(android)
