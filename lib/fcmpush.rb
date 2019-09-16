@@ -5,5 +5,5 @@ module Fcmpush
   autoload :Message, 'fcmpush/message'
   autoload :Client, 'fcmpush/client'
   autoload :Refinement, 'fcmpush/refinement'
-  autoload :Validatable, 'fcmpush/validatable'
+  autoload :ValidatableObject, 'fcmpush/validatable_object'
 end
