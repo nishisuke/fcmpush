@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Fcmpush
-  module Client
+  class Client
     # TODO: project id
     URL = 'https://fcm.googleapis.com/v1/projects/virtually-650f2/messages:send'
 
-    def initialize(authorization:, http_driver: Faraday)
+    def initialize(authorization:, http_driver: ::Faraday)
       @http_driver = http_driver
       @authorization = authorization
     end
