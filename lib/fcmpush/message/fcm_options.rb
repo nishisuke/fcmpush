@@ -3,7 +3,7 @@
 module Fcmpush
   class Message
     class FcmOptions
-      include ::Fcmpush::Validatable
+      include ::Fcmpush::ValidatableObject
 
       def validate!
         analytics_label = value[:analytics_label]

@@ -3,7 +3,7 @@
 module Fcmpush
   class Message
     class Topic
-      include ::Fcmpush::Validatable
+      include ::Fcmpush::ValidatableObject
 
       def validate!
         unless value.instance_of?(String) && !value.empty? && value.start_with?('/topics/')

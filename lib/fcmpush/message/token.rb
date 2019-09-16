@@ -3,7 +3,7 @@
 module Fcmpush
   class Message
     class Token
-      include ::Fcmpush::Validatable
+      include ::Fcmpush::ValidatableObject
 
       def validate!
         unless value.instance_of?(String) && !value.empty?

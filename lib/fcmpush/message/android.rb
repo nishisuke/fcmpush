@@ -3,7 +3,7 @@
 module Fcmpush
   class Message
     class Android
-      include ::Fcmpush::Validatable
+      include ::Fcmpush::ValidatableObject
 
       def validate!
       end

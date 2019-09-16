@@ -3,7 +3,7 @@
 module Fcmpush
   class Message
     class Apns
-      include ::Fcmpush::Validatable
+      include ::Fcmpush::ValidatableObject
 
       def validate!
       end

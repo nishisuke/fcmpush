@@ -3,7 +3,7 @@
 module Fcmpush
   class Message
     class Notification
-      include ::Fcmpush::Validatable
+      include ::Fcmpush::ValidatableObject
 
       def validate!
         title = value[:title]

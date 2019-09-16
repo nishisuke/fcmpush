@@ -3,7 +3,7 @@
 module Fcmpush
   class Message
     class Webpush
-      include ::Fcmpush::Validatable
+      include ::Fcmpush::ValidatableObject
 
       def validate!
       end

@@ -3,7 +3,7 @@
 module Fcmpush
   class Message
     class Data
-      include ::Fcmpush::Validatable
+      include ::Fcmpush::ValidatableObject
 
       def validate!
         unless value.instance_of?(Hash) && value.values.all? { |v| v.instance_of?(String) && !v.empty? }
