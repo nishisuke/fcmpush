@@ -4,6 +4,9 @@ module Fcmpush
   module Message
     class Apns
       include Validatable
+
+      def validate!
+      end
     end
   end
 end
