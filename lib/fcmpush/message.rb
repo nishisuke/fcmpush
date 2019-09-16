@@ -4,6 +4,18 @@
 
 module Fcmpush
   class Message
+    using ::Fcmpush::Refinement::StringPascalize
+
+    autoload :Token, 'fcmpush/message/token'
+    autoload :Topic, 'fcmpush/message/topic'
+    autoload :Condition, 'fcmpush/message/condition'
+    autoload :Data, 'fcmpush/message/data'
+    autoload :Notification, 'fcmpush/message/notification'
+    autoload :Android, 'fcmpush/message/android'
+    autoload :Webpush, 'fcmpush/message/webpush'
+    autoload :Apns, 'fcmpush/message/apns'
+    autoload :FcmOptions, 'fcmpush/message/fcm_options'
+
     def initialize
       @token = nil
       @topic = nil
@@ -17,16 +29,23 @@ module Fcmpush
     end
 
     def send(authorization:, validate_only: false, client_class: ::Fcmpush::Client)
-      message = instance_variables.each.with_object({}) do |name, hash|
-        val = instance_variable_get(name)
-        unless val.nil?
-          key = name.to_s.delete_prefix('@').to_sym
-          hash[key] = val 
-        end
-      end
-      body = { message: message, validate_only: validate_only }
+      body = { message: as_valid_json!, validate_only: validate_only }
       client = client_class.new(authorization: authorization)
       client.send(body)
+    end
+
+    def as_valid_json!
+      instance_variables.each.with_object({}) do |key, hash|
+        val = instance_variable_get(key)
+
+        unless val.nil?
+          name = key.to_s.delete_prefix('@')
+          klass = self.class.const_get(name.pascalize)
+          klass.new(val).validate!
+
+          hash[name] = val
+        end
+      end
     end
 
     def set_token(token)

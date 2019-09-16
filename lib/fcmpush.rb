@@ -3,4 +3,6 @@ require 'fcmpush/error'
 
 module Fcmpush
   autoload :Message, 'fcmpush/message'
+  autoload :Client, 'fcmpush/client'
+  autoload :Refinement, 'fcmpush/refinement'
 end
