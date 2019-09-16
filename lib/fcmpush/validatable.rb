@@ -2,5 +2,8 @@
 
 module Fcmpush
   module Validatable
+    def validate!
+      raise NotImplementedError
+    end
   end
 end
