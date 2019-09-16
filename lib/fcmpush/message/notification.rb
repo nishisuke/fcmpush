@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Fcmpush
-  module Message
+  class Message
     class Notification
-      include Validatable
+      include ::Fcmpush::Validatable
 
       def validate!
         title = value[:title]

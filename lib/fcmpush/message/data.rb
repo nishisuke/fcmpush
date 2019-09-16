@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Fcmpush
-  module Message
+  class Message
     class Data
-      include Validatable
+      include ::Fcmpush::Validatable
 
       def validate!
         unless value.instance_of?(Hash) && value.values.all? { |v| v.instance_of?(String) && !v.empty? }

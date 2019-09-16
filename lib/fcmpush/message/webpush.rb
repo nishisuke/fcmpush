@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Fcmpush
-  module Message
+  class Message
     class Webpush
-      include Validatable
+      include ::Fcmpush::Validatable
 
       def validate!
       end

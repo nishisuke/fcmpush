@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Fcmpush
-  module Message
+  class Message
     class Condition
-      include Validatable
+      include ::Fcmpush::Validatable
 
       def validate!
         unless value.instance_of?(String) && !value.empty?
