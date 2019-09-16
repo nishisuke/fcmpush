@@ -6,6 +6,7 @@ module Fcmpush
       include Validatable
 
       def validate!
+        value.instance_of?(String) && !value.empty? && value.start_with?('/topics/')
       end
     end
   end

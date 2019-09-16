@@ -6,6 +6,7 @@ module Fcmpush
       include Validatable
 
       def validate!
+        value.instance_of?(String) && !value.empty?
       end
     end
   end
