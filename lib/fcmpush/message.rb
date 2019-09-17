@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns
 # https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages
+# https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification
 
 module Fcmpush
   class Message
